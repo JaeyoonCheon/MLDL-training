@@ -50,10 +50,13 @@ train_scaled, val_scaled, train_target, val_target = train_test_split(
 print(train_scaled.shape, train_target.shape)
 print(val_scaled.shape, train_target.shape)
 
+# 밀집층 생성 (768 * 10)
 dense = keras.layers.Dense(10, activation="softmax", input_shape=(784,))
 
+# 신경망 모델 생성
 model = keras.Sequential(dense)
 
+# 희소 다중 크로스엔트로피 함수를 손실 함수로 적용
 model.compile(loss="sparse_categorical_crossentropy", metrics="accuracy")
 
 print(train_target[:10])
